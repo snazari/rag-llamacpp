@@ -124,39 +124,28 @@ def create_rag_chain(embedding_model, vectorstore, streaming=True):
         stop=["Human:", "User:", "Question:", "Answer:", "Source:", "Sources:", "Context:"],
     )
 
-    # --- Creating Optimized RAG Chain with HyDE, Multi-Query, and Re-ranking ---
-    logger.info("Creating optimized RAG chain with HyDE, Multi-Query, and Re-ranking...")
+    # --- Creating Hybrid RAG Chain with Direct + Multi-Query Retrieval ---
+    logger.info("Creating hybrid RAG chain with direct similarity and multi-query retrieval...")
 
-    # 1. Hypothetical Document Embedder (HyDE)
-    hyde_prompt_template = """Please write a short, hypothetical document that answers the user's question.
-Question: {question}
-Hypothetical Document:"""
-    HYDE_PROMPT = PromptTemplate.from_template(hyde_prompt_template)
-    hyde_embeddings = HypotheticalDocumentEmbedder.from_llm(llm, embedding_model, custom_prompt=HYDE_PROMPT)
-
-    # 2. Create HyDE-enhanced retriever with existing vectorstore
-    vectorstore_with_hyde = Chroma(
-        embedding_function=hyde_embeddings,
-        persist_directory=PERSIST_DIRECTORY,
-    )
-    
-    # 3. Base retriever with MMR for diversity
-    hyde_retriever = vectorstore_with_hyde.as_retriever(
+    # 1. Direct similarity retriever (using original embeddings)
+    direct_retriever = vectorstore.as_retriever(
         search_type="mmr",
-        search_kwargs={"k": 15, "lambda_mult": 0.8}  # Increased lambda for more relevance
+        search_kwargs={"k": 10, "lambda_mult": 0.7}
     )
     
-    # 4. Multi-Query Retrieval (generates multiple query variations)
+    # 2. Multi-Query Retrieval with direct retriever (no HyDE for now)
     multi_query_retriever = MultiQueryRetriever.from_llm(
-        retriever=hyde_retriever,
+        retriever=direct_retriever,
         llm=llm,
         prompt=PromptTemplate(
             input_variables=["question"],
-            template="""Generate exactly 3 alternative versions of the following question. Each alternative should be a single, concise question on a new line. Do not include explanations or additional text.
+            template="""Rewrite this question in 3 different ways:
 
-Original question: {question}
+{question}
 
-Alternative questions:"""
+1.
+2.
+3."""
         )
     )
     
