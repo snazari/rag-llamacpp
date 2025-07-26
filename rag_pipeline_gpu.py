@@ -133,11 +133,11 @@ Hypothetical Document:"""
     hyde_embeddings = HypotheticalDocumentEmbedder.from_llm(llm, embedding_model, custom_prompt=HYDE_PROMPT)
 
     # 2. Create a retriever with HyDE embeddings
-    #hyde_retriever = vectorstore.as_retriever(search_kwargs={"k": 25})
+    # Use the same collection as the ingested documents, but with HyDE embeddings
     vectorstore_with_hyde = Chroma(
         embedding_function=hyde_embeddings,
         persist_directory=PERSIST_DIRECTORY,
-        collection_name="hyde_retriever",
+        # Remove collection_name to use default collection with your documents
     )
     
     # 2.5 Create a retriever with HyDE embeddings and MMR updated
