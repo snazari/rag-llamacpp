@@ -129,10 +129,18 @@ def create_rag_chain(embedding_model, vectorstore, streaming=True):
         n_gpu_layers=99,
         n_batch=64000,
         n_ctx=128000,
+        max_tokens=128000,
         f16_kv=False,
         callback_manager=callback_manager,
         verbose=True,
         temperature=0.1,
+        top_p=0.9,
+        top_k=40,
+        max_new_tokens=128000,
+        repeat_penalty=1.1,
+        frequency_penalty=0.0,
+        presence_penalty=0.0,
+        stop=["Human:", "User:", "Question:", "Answer:", "Source:", "Sources:", "Context:"],
     )
 
     # --- Creating the RAG Chain with HyDE and Re-ranking ---
