@@ -155,11 +155,12 @@ Hypothetical Document:"""
     HYDE_PROMPT = PromptTemplate.from_template(hyde_prompt_template)
     hyde_embeddings = HypotheticalDocumentEmbedder.from_llm(llm, embedding_model, custom_prompt=HYDE_PROMPT)
 
-    # 2. Create a retriever with HyDE embeddings
+    # 2. Create a retriever with HyDE embeddings and top_n=5
     hyde_retriever = HydeRetriever(
         vectorstore=vectorstore,
         embeddings=hyde_embeddings,
-        search_kwargs={"k": 10},
+        search_kwargs={"k": 25},
+        top_n=5,
     )
 
     # 3. Set up the re-ranker
