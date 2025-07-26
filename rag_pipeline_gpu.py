@@ -17,34 +17,12 @@ from langchain.chains import RetrievalQA, HypotheticalDocumentEmbedder
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.prompts import PromptTemplate
 from langchain.retrievers import ContextualCompressionRetriever
-from langchain_core.vectorstores import VectorStoreRetriever
 from langchain_community.cross_encoders import HuggingFaceCrossEncoder
 from langchain.retrievers.document_compressors.cross_encoder_rerank import CrossEncoderReranker
 from langchain_core.embeddings import Embeddings
 from pydantic.v1 import Field
 from typing import Any, List
 from langchain_core.documents import Document
-
-# --- Custom HyDE Retriever --- Might have to use the Langchain HyDE retriever instead
-class HydeRetriever(VectorStoreRetriever):
-    """Retriever that uses HyDE to embed the query and then searches the vector store."""
-
-    embeddings: Embeddings = Field(..., description="The embeddings model to use for the query.")
-
-    def _get_relevant_documents(self, query: str, *, run_manager: Any) -> List[Document]:
-        """Get documents relevant to a query.
-
-        Args:
-            query: String to find relevant documents for.
-            run_manager: The callbacks handler to use for this call.
-
-        Returns:
-            List of relevant documents.
-        """
-        embedded_query = self.embeddings.embed_query(query)
-        return self.vectorstore.similarity_search_by_vector(
-            embedding=embedded_query, **self.search_kwargs
-        )
 
 # --- Configuration ---
 PERSIST_DIRECTORY = "./chroma_db"
@@ -155,12 +133,20 @@ Hypothetical Document:"""
     hyde_embeddings = HypotheticalDocumentEmbedder.from_llm(llm, embedding_model, custom_prompt=HYDE_PROMPT)
 
     # 2. Create a retriever with HyDE embeddings
-    hyde_retriever = HydeRetriever(
-        vectorstore=vectorstore,
-        embeddings=hyde_embeddings,
-        search_kwargs={"k": 25},  # Removed MMR parameters that don't work with custom retriever
+    #hyde_retriever = vectorstore.as_retriever(search_kwargs={"k": 25})
+    vectorstore_with_hyde = Chroma(
+        embedding_function=hyde_embeddings,
+        persist_directory=PERSIST_DIRECTORY,
+        collection_name="hyde_retriever",
     )
-
+    
+    # 2.5 Create a retriever with HyDE embeddings and MMR
+    hyde_retriever = vectorstore_with_hyde.as_retriever(
+        search_kwargs={"k": 25, 
+        "search_type": "mmr", 
+        "lambda_mult": 0.7}
+        )
+    
     # 3. Set up the re-ranker
     reranker_model = HuggingFaceCrossEncoder(model_name="cross-encoder/ms-marco-MiniLM-L-6-v2", model_kwargs={'device': 'cuda'})
     compressor = CrossEncoderReranker(model=reranker_model, top_n=5)
