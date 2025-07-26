@@ -56,9 +56,9 @@ EMBEDDING_MODEL_NAME = "BAAI/bge-small-en-v1.5"
 #MODEL_PATH = "/home/sam/sandbox/rag/models/UNCENSORED-Fusetrix-Dolphin-3.2-1B-GRPO_Creative_RP.Q8_0.gguf"
 #MODEL_PATH = "/home/sam/sandbox/rag/models/L3.2-8X3B-MOE-Dark-Champion-Inst-18.4B-uncen-ablit_D_AU-q5_k_m.gguf"
 #MODEL_PATH = "/home/sam/sandbox/rag/models/Qwen2.5-7B-Instruct.fp16.gguf"
-MODEL_PATH = "/home/sam/sandbox/rag/models/Meta-Llama-3-8B-Instruct.fp16.gguf"
-TXT_DOCUMENT_DIRECTORY = '/home/sam/sandbox/rag/docs/final_for_rag'
-MD_DOCUMENT_DIRECTORY = '/home/sam/sandbox/rag/docs/md/'
+MODEL_PATH = "/datadrive/part1/sandbox/models/Qwen3-30B-A3B-UD-Q8_K_XL.gguf"
+TXT_DOCUMENT_DIRECTORY = '/datadrive/part1/sandbox/rag-llamacpp/docs/final_for_rag'
+MD_DOCUMENT_DIRECTORY = '/datadrive/part1/sandbox/rag-llamacpp/docs/md/'
 
 # --- Helper Functions for Incremental Updates ---
 
@@ -131,7 +131,7 @@ def create_rag_chain(embedding_model, vectorstore, streaming=True):
     # LLM for generating the final answer
     llm = LlamaCpp(
         model_path=MODEL_PATH,
-        n_gpu_layers=20,
+        n_gpu_layers=99,
         n_batch=1024,
         n_ctx=8192,
         f16_kv=True,
