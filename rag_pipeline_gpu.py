@@ -140,11 +140,10 @@ Hypothetical Document:"""
         collection_name="hyde_retriever",
     )
     
-    # 2.5 Create a retriever with HyDE embeddings and MMR
+    # 2.5 Create a retriever with HyDE embeddings and MMR updated
     hyde_retriever = vectorstore_with_hyde.as_retriever(
-        search_kwargs={"k": 25, 
-        "search_type": "mmr", 
-        "lambda_mult": 0.7}
+        search_type="mmr",
+        search_kwargs={"k": 25, "lambda_mult": 0.7}
         )
     
     # 3. Set up the re-ranker
