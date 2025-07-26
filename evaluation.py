@@ -13,15 +13,31 @@ from ragas.metrics import (
 from langchain_community.llms import LlamaCpp
 from langchain_community.chat_models import ChatLlamaCpp
 
-# Import the refactored RAG chain creation function and other necessary components
-from rag_pipeline_gpu import (
-    create_rag_chain,
-    HuggingFaceEmbeddings,
-    Chroma,
-    EMBEDDING_MODEL_NAME,
-    PERSIST_DIRECTORY,
-    logger
-)
+# Configuration: Choose between local GPU pipeline or cloud-based pipeline
+USE_CLOUD_PIPELINE = True  # Set to False to use local GPU pipeline
+
+if USE_CLOUD_PIPELINE:
+    # Import cloud-based RAG pipeline components
+    from rag_pipeline_gpu_cloud import (
+        create_rag_chain,
+        HuggingFaceEmbeddings,
+        Chroma,
+        EMBEDDING_MODEL_NAME,
+        PERSIST_DIRECTORY,
+        logger
+    )
+    print("🌐 Using Cloud-based RAG Pipeline (OpenAI API)")
+else:
+    # Import local GPU RAG pipeline components
+    from rag_pipeline_gpu import (
+        create_rag_chain,
+        HuggingFaceEmbeddings,
+        Chroma,
+        EMBEDDING_MODEL_NAME,
+        PERSIST_DIRECTORY,
+        logger
+    )
+    print("🖥️ Using Local GPU RAG Pipeline (LlamaCpp)")
 
 # --- 1. Expanded Ground Truth Test Set ---
 # Comprehensive dataset with various question types to test different aspects of the RAG pipeline
@@ -61,7 +77,17 @@ ground_truth_data = [
 
 def run_evaluation():
     """Runs the RAG pipeline evaluation using Ragas."""
-    logger.info("Starting RAG pipeline evaluation...")
+    pipeline_type = "Cloud-based (OpenAI)" if USE_CLOUD_PIPELINE else "Local GPU (LlamaCpp)"
+    logger.info(f"Starting RAG pipeline evaluation using {pipeline_type}...")
+    
+    # Validate environment for cloud pipeline
+    if USE_CLOUD_PIPELINE:
+        # Check if we're in the right conda environment
+        conda_env = os.environ.get('CONDA_DEFAULT_ENV', 'unknown')
+        logger.info(f"Current conda environment: {conda_env}")
+        if conda_env != 'rag-llamacpp':
+            logger.warning(f"Expected conda environment 'rag-llamacpp', but found '{conda_env}'")
+            logger.warning("Please activate the correct environment: conda activate rag-llamacpp")
 
     # --- 2. Load the RAG Pipeline Components ---
     logger.info("Loading embedding model and vector store...")
@@ -78,7 +104,14 @@ def run_evaluation():
     vectorstore = Chroma(persist_directory=PERSIST_DIRECTORY, embedding_function=embedding_model)
 
     # Create the RAG chain, ensuring streaming is off for evaluation
-    qa_chain = create_rag_chain(embedding_model, vectorstore, streaming=False)
+    try:
+        qa_chain = create_rag_chain(embedding_model, vectorstore, streaming=False)
+        logger.info(f"Successfully created {pipeline_type} RAG chain")
+    except Exception as e:
+        logger.error(f"Failed to create RAG chain: {str(e)}")
+        if USE_CLOUD_PIPELINE:
+            logger.error("If using cloud pipeline, ensure OPENAI_API_KEY is properly set")
+        raise
 
     # --- 3. Generate Answers and Contexts for the Test Set ---
     logger.info("Generating answers for the test set...")
@@ -224,11 +257,16 @@ def display_comprehensive_results(results, metrics):
 
 def save_evaluation_results(results, metrics):
     """Save evaluation results to a JSON file."""
+    pipeline_version = 'cloud_openai_with_hybrid_retrieval' if USE_CLOUD_PIPELINE else 'gpu_enhanced_with_hyde_reranker'
+    pipeline_type = 'Cloud-based (OpenAI API)' if USE_CLOUD_PIPELINE else 'Local GPU (LlamaCpp)'
+    
     evaluation_data = {
         'metadata': {
             'evaluation_timestamp': metrics['timestamp'],
             'total_questions': metrics['total_questions'],
-            'rag_pipeline_version': 'gpu_enhanced_with_hyde_reranker'
+            'rag_pipeline_version': pipeline_version,
+            'pipeline_type': pipeline_type,
+            'conda_environment': os.environ.get('CONDA_DEFAULT_ENV', 'unknown')
         },
         'metrics': metrics,
         'detailed_results': results
