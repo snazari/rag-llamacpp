@@ -1884,3 +1884,500 @@ The given text provides no information about Sam Nazari's role at Amentum.
 2025-07-23 22:24:11,262 - INFO - Processing question: What is the staffing structure for the ARPA-H project?
 2025-07-23 22:24:42,528 - INFO - Running enhanced RAG pipeline evaluation...
 2025-07-23 22:24:42,529 - INFO - Evaluation results saved to evaluation_results_20250723_222442.json
+2025-07-26 13:21:55,401 - INFO - Loading embedding model: BAAI/bge-large-en-v1.5
+2025-07-26 13:21:59,663 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en-v1.5
+2025-07-26 13:21:59,947 - WARNING - No sentence-transformers model found with name BAAI/bge-large-en-v1.5. Creating a new one with mean pooling.
+2025-07-26 13:25:31,899 - INFO - Loading embedding model: BAAI/bge-large-en-v1.5
+2025-07-26 13:25:34,490 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en-v1.5
+2025-07-26 13:44:03,954 - INFO - Loading embedding model: BAAI/bge-large-en-v1.5
+2025-07-26 13:44:07,128 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en-v1.5
+2025-07-26 13:44:09,162 - INFO - Starting document ingestion process...
+2025-07-26 13:44:09,292 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-26 13:44:09,485 - INFO - Adding 2633 new/modified documents...
+2025-07-26 13:45:53,136 - INFO - Loading embedding model: BAAI/bge-large-en-v1.5
+2025-07-26 13:45:55,091 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en-v1.5
+2025-07-26 13:45:56,671 - INFO - Starting document ingestion process...
+2025-07-26 13:45:56,708 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-26 13:45:56,794 - INFO - Adding 2633 new/modified documents...
+2025-07-26 13:45:58,666 - WARNING - short text: "title: Sayari created: 2024-07-15". Defaulting to English.
+2025-07-26 13:45:59,384 - WARNING - short text: "![[IMG_3903.jpeg]] https://github.com/polakowo/vectorbt/blob/master/examples/BitcoinDMAC.ipynb https://nbviewer.org/github/polakowo/vectorbt/tree/master/ https://gemini.google.com/app/0e1f5561a1bea636". Defaulting to English.
+2025-07-26 13:45:59,450 - WARNING - short text: "https://mattermost.aaco.analyticsgateway.com/darpa-air/pl/bcphtwfnzifm3namhbz9q11pih". Defaulting to English.
+2025-07-26 13:46:02,381 - WARNING - short text: "business_travel_air_hotel_taxi". Defaulting to English.
+2025-07-26 13:46:02,383 - WARNING - short text: "Description American Airlines". Defaulting to English.
+2025-07-26 13:46:02,393 - WARNING - short text: "PRICELN*BEACON HOTEL". Defaulting to English.
+2025-07-26 13:46:02,396 - WARNING - short text: "American Airlines". Defaulting to English.
+2025-07-26 13:46:02,396 - WARNING - short text: "PRICELN*ALOFT SECAUCUS American Airlines". Defaulting to English.
+2025-07-26 13:46:02,403 - WARNING - short text: "Page 1". Defaulting to English.
+2025-07-26 13:46:02,404 - WARNING - short text: "518.67 Hotel". Defaulting to English.
+2025-07-26 13:46:02,413 - WARNING - short text: "257.2 Air Travel". Defaulting to English.
+2025-07-26 13:46:02,413 - WARNING - short text: "239.98 Hotel". Defaulting to English.
+2025-07-26 13:46:02,417 - WARNING - short text: "172.97 Hotel". Defaulting to English.
+2025-07-26 13:46:02,417 - WARNING - short text: "172.2 Air Travel". Defaulting to English.
+2025-07-26 13:46:02,427 - WARNING - short text: "143.6 Air Travel". Defaulting to English.
+2025-07-26 13:46:02,427 - WARNING - short text: "142.98 Hotel". Defaulting to English.
+2025-07-26 13:46:02,427 - WARNING - short text: "business_travel_air_hotel_taxi". Defaulting to English.
+2025-07-26 13:46:02,434 - WARNING - short text: "420429 ZIPCAR JUL27 33015292". Defaulting to English.
+2025-07-26 13:46:02,435 - WARNING - short text: "420429 ZIPCAR AUG07 33388108". Defaulting to English.
+2025-07-26 13:46:02,435 - WARNING - short text: "Page 2". Defaulting to English.
+2025-07-26 13:46:02,435 - WARNING - short text: "142.2 Air Travel". Defaulting to English.
+2025-07-26 13:46:02,444 - WARNING - short text: "108.8 Air Travel". Defaulting to English.
+2025-07-26 13:46:02,444 - WARNING - short text: "102.97 Travel". Defaulting to English.
+2025-07-26 13:46:02,456 - WARNING - short text: "88.6 Air Travel". Defaulting to English.
+2025-07-26 13:46:02,456 - WARNING - short text: "86.86 Hotel". Defaulting to English.
+2025-07-26 13:46:02,456 - WARNING - short text: "85 Air Travel". Defaulting to English.
+2025-07-26 13:46:02,456 - WARNING - short text: "83.87 Hotel 81.97 Hotel". Defaulting to English.
+2025-07-26 13:46:02,460 - WARNING - short text: "64.84 Hotel". Defaulting to English.
+2025-07-26 13:46:02,471 - WARNING - short text: "business_travel_air_hotel_taxi". Defaulting to English.
+2025-07-26 13:46:02,475 - WARNING - short text: "Zipcar SEP14 35159418". Defaulting to English.
+2025-07-26 13:46:02,475 - WARNING - short text: "LSF NATIONAL AIRPORT". Defaulting to English.
+2025-07-26 13:46:02,485 - WARNING - short text: "American Airlines". Defaulting to English.
+2025-07-26 13:46:02,485 - WARNING - short text: "AGENT FEE 89008276489086". Defaulting to English.
+2025-07-26 13:46:02,490 - WARNING - short text: "Lyft American Airlines". Defaulting to English.
+2025-07-26 13:46:02,492 - WARNING - short text: "Page 3". Defaulting to English.
+2025-07-26 13:46:02,499 - WARNING - short text: "32 Air Travel". Defaulting to English.
+2025-07-26 13:46:02,511 - WARNING - short text: "29 Air Travel". Defaulting to English.
+2025-07-26 13:46:02,518 - WARNING - short text: "24 Air Travel". Defaulting to English.
+2025-07-26 13:46:02,524 - WARNING - short text: "16.04 Hotel". Defaulting to English.
+2025-07-26 13:46:02,534 - WARNING - short text: "11.2 Air Travel". Defaulting to English.
+2025-07-26 13:46:02,541 - WARNING - short text: "business_travel_air_hotel_taxi". Defaulting to English.
+2025-07-26 13:46:02,547 - WARNING - short text: "American Airlines". Defaulting to English.
+2025-07-26 13:46:02,549 - WARNING - short text: "Page 4". Defaulting to English.
+2025-07-26 13:46:02,550 - WARNING - short text: "6.6 Air Travel". Defaulting to English.
+2025-07-26 13:46:02,550 - WARNING - short text: "6.36 Hotel 6 Hotel". Defaulting to English.
+2025-07-26 13:46:02,550 - WARNING - short text: "5.6 Air Travel". Defaulting to English.
+2025-07-26 13:46:02,552 - WARNING - short text: "0.01 Air Travel". Defaulting to English.
+2025-07-26 13:46:02,554 - WARNING - short text: "Labels Reimbursable". Defaulting to English.
+2025-07-26 13:46:02,554 - WARNING - short text: "Reimbursable". Defaulting to English.
+2025-07-26 13:46:02,554 - WARNING - short text: "Reimbursable". Defaulting to English.
+2025-07-26 13:46:02,554 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:02,554 - WARNING - short text: "Reimbursable". Defaulting to English.
+2025-07-26 13:46:02,554 - WARNING - short text: "Reimbursable". Defaulting to English.
+2025-07-26 13:46:02,556 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:02,556 - WARNING - short text: "Cognym Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:02,556 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:02,560 - WARNING - short text: "Tax Related". Defaulting to English.
+2025-07-26 13:46:02,560 - WARNING - short text: "Notes". Defaulting to English.
+2025-07-26 13:46:02,560 - WARNING - short text: "business_travel_air_hotel_taxi". Defaulting to English.
+2025-07-26 13:46:02,560 - WARNING - short text: "Page 5". Defaulting to English.
+2025-07-26 13:46:02,560 - WARNING - short text: "Cognym Reimbursable Cognym Reimbursable". Defaulting to English.
+2025-07-26 13:46:02,562 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:02,562 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:02,562 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:02,562 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:02,562 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:02,562 - WARNING - short text: "Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:02,562 - WARNING - short text: "Cognym Cognym Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:02,562 - WARNING - short text: "Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:02,562 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:02,562 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:02,562 - WARNING - short text: "Cognym Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:02,562 - WARNING - short text: "business_travel_air_hotel_taxi". Defaulting to English.
+2025-07-26 13:46:02,563 - WARNING - short text: "Page 6". Defaulting to English.
+2025-07-26 13:46:02,565 - WARNING - short text: "Reimbursable Cognym". Defaulting to English.
+2025-07-26 13:46:02,565 - WARNING - short text: "Cognym Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:02,565 - WARNING - short text: "Cognym Cognym Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:02,565 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:02,565 - WARNING - short text: "Cognym Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:02,565 - WARNING - short text: "Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:02,569 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:02,569 - WARNING - short text: "Cognym Cognym Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:02,569 - WARNING - short text: "business_travel_air_hotel_taxi". Defaulting to English.
+2025-07-26 13:46:02,569 - WARNING - short text: "Page 7". Defaulting to English.
+2025-07-26 13:46:02,569 - WARNING - short text: "Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:02,569 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:02,572 - WARNING - short text: "business_travel_air_hotel_taxi". Defaulting to English.
+2025-07-26 13:46:02,572 - WARNING - short text: "Page 8". Defaulting to English.
+2025-07-26 13:46:03,108 - WARNING - short text: "TASKS". Defaulting to English.
+2025-07-26 13:46:03,108 - WARNING - short text: "HIGHLIGHT". Defaulting to English.
+2025-07-26 13:46:03,108 - WARNING - short text: "NOTES". Defaulting to English.
+2025-07-26 13:46:03,108 - WARNING - short text: "HYDRATION". Defaulting to English.
+2025-07-26 13:46:03,108 - WARNING - short text: "WEATHER". Defaulting to English.
+2025-07-26 13:46:03,112 - WARNING - short text: "WEEK2". Defaulting to English.
+2025-07-26 13:46:03,112 - WARNING - short text: "sun jun". Defaulting to English.
+2025-07-26 13:46:03,115 - WARNING - short text: "DINNERW answo". Defaulting to English.
+2025-07-26 13:46:03,115 - WARNING - short text: "healtynotfulloflove". Defaulting to English.
+2025-07-26 13:46:03,217 - WARNING - short text: "Jessica Crouse". Defaulting to English.
+2025-07-26 13:46:03,217 - WARNING - short text: "Catalogue our data sets". Defaulting to English.
+2025-07-26 13:46:03,748 - WARNING - No features in text.
+2025-07-26 13:46:03,748 - WARNING - No features in text.
+2025-07-26 13:46:05,634 - WARNING - short text: "title: multiresolution analysis". Defaulting to English.
+2025-07-26 13:46:05,801 - WARNING - short text: "business_travel_air_hotel_taxi". Defaulting to English.
+2025-07-26 13:46:05,803 - WARNING - short text: "Description American Airlines". Defaulting to English.
+2025-07-26 13:46:05,806 - WARNING - short text: "PRICELN*BEACON HOTEL". Defaulting to English.
+2025-07-26 13:46:05,809 - WARNING - short text: "American Airlines". Defaulting to English.
+2025-07-26 13:46:05,809 - WARNING - short text: "PRICELN*ALOFT SECAUCUS American Airlines". Defaulting to English.
+2025-07-26 13:46:05,816 - WARNING - short text: "Page 1". Defaulting to English.
+2025-07-26 13:46:05,817 - WARNING - short text: "518.67 Hotel". Defaulting to English.
+2025-07-26 13:46:05,825 - WARNING - short text: "257.2 Air Travel". Defaulting to English.
+2025-07-26 13:46:05,825 - WARNING - short text: "239.98 Hotel". Defaulting to English.
+2025-07-26 13:46:05,830 - WARNING - short text: "172.97 Hotel". Defaulting to English.
+2025-07-26 13:46:05,830 - WARNING - short text: "172.2 Air Travel". Defaulting to English.
+2025-07-26 13:46:05,839 - WARNING - short text: "143.6 Air Travel". Defaulting to English.
+2025-07-26 13:46:05,839 - WARNING - short text: "142.98 Hotel". Defaulting to English.
+2025-07-26 13:46:05,839 - WARNING - short text: "business_travel_air_hotel_taxi". Defaulting to English.
+2025-07-26 13:46:05,846 - WARNING - short text: "420429 ZIPCAR JUL27 33015292". Defaulting to English.
+2025-07-26 13:46:05,847 - WARNING - short text: "420429 ZIPCAR AUG07 33388108". Defaulting to English.
+2025-07-26 13:46:05,847 - WARNING - short text: "Page 2". Defaulting to English.
+2025-07-26 13:46:05,847 - WARNING - short text: "142.2 Air Travel". Defaulting to English.
+2025-07-26 13:46:05,856 - WARNING - short text: "108.8 Air Travel". Defaulting to English.
+2025-07-26 13:46:05,856 - WARNING - short text: "102.97 Travel". Defaulting to English.
+2025-07-26 13:46:05,867 - WARNING - short text: "88.6 Air Travel". Defaulting to English.
+2025-07-26 13:46:05,867 - WARNING - short text: "86.86 Hotel". Defaulting to English.
+2025-07-26 13:46:05,867 - WARNING - short text: "85 Air Travel". Defaulting to English.
+2025-07-26 13:46:05,868 - WARNING - short text: "83.87 Hotel 81.97 Hotel". Defaulting to English.
+2025-07-26 13:46:05,872 - WARNING - short text: "64.84 Hotel". Defaulting to English.
+2025-07-26 13:46:05,882 - WARNING - short text: "business_travel_air_hotel_taxi". Defaulting to English.
+2025-07-26 13:46:05,885 - WARNING - short text: "Zipcar SEP14 35159418". Defaulting to English.
+2025-07-26 13:46:05,886 - WARNING - short text: "LSF NATIONAL AIRPORT". Defaulting to English.
+2025-07-26 13:46:05,895 - WARNING - short text: "American Airlines". Defaulting to English.
+2025-07-26 13:46:05,895 - WARNING - short text: "AGENT FEE 89008276489086". Defaulting to English.
+2025-07-26 13:46:05,900 - WARNING - short text: "Lyft American Airlines". Defaulting to English.
+2025-07-26 13:46:05,902 - WARNING - short text: "Page 3". Defaulting to English.
+2025-07-26 13:46:05,909 - WARNING - short text: "32 Air Travel". Defaulting to English.
+2025-07-26 13:46:05,921 - WARNING - short text: "29 Air Travel". Defaulting to English.
+2025-07-26 13:46:05,928 - WARNING - short text: "24 Air Travel". Defaulting to English.
+2025-07-26 13:46:05,933 - WARNING - short text: "16.04 Hotel". Defaulting to English.
+2025-07-26 13:46:05,942 - WARNING - short text: "11.2 Air Travel". Defaulting to English.
+2025-07-26 13:46:05,948 - WARNING - short text: "business_travel_air_hotel_taxi". Defaulting to English.
+2025-07-26 13:46:05,955 - WARNING - short text: "American Airlines". Defaulting to English.
+2025-07-26 13:46:05,956 - WARNING - short text: "Page 4". Defaulting to English.
+2025-07-26 13:46:05,957 - WARNING - short text: "6.6 Air Travel". Defaulting to English.
+2025-07-26 13:46:05,957 - WARNING - short text: "6.36 Hotel 6 Hotel". Defaulting to English.
+2025-07-26 13:46:05,957 - WARNING - short text: "5.6 Air Travel". Defaulting to English.
+2025-07-26 13:46:05,959 - WARNING - short text: "0.01 Air Travel". Defaulting to English.
+2025-07-26 13:46:05,961 - WARNING - short text: "Labels Reimbursable". Defaulting to English.
+2025-07-26 13:46:05,961 - WARNING - short text: "Reimbursable". Defaulting to English.
+2025-07-26 13:46:05,961 - WARNING - short text: "Reimbursable". Defaulting to English.
+2025-07-26 13:46:05,961 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:05,961 - WARNING - short text: "Reimbursable". Defaulting to English.
+2025-07-26 13:46:05,961 - WARNING - short text: "Reimbursable". Defaulting to English.
+2025-07-26 13:46:05,963 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:05,963 - WARNING - short text: "Cognym Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:05,963 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:05,967 - WARNING - short text: "Tax Related". Defaulting to English.
+2025-07-26 13:46:05,967 - WARNING - short text: "Notes". Defaulting to English.
+2025-07-26 13:46:05,967 - WARNING - short text: "business_travel_air_hotel_taxi". Defaulting to English.
+2025-07-26 13:46:05,967 - WARNING - short text: "Page 5". Defaulting to English.
+2025-07-26 13:46:05,967 - WARNING - short text: "Cognym Reimbursable Cognym Reimbursable". Defaulting to English.
+2025-07-26 13:46:05,969 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:05,969 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:05,969 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:05,969 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:05,969 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:05,969 - WARNING - short text: "Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:05,969 - WARNING - short text: "Cognym Cognym Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:05,969 - WARNING - short text: "Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:05,969 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:05,969 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:05,969 - WARNING - short text: "Cognym Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:05,969 - WARNING - short text: "business_travel_air_hotel_taxi". Defaulting to English.
+2025-07-26 13:46:05,969 - WARNING - short text: "Page 6". Defaulting to English.
+2025-07-26 13:46:05,972 - WARNING - short text: "Reimbursable Cognym". Defaulting to English.
+2025-07-26 13:46:05,972 - WARNING - short text: "Cognym Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:05,972 - WARNING - short text: "Cognym Cognym Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:05,972 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:05,972 - WARNING - short text: "Cognym Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:05,972 - WARNING - short text: "Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:05,976 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:05,976 - WARNING - short text: "Cognym Cognym Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:05,976 - WARNING - short text: "business_travel_air_hotel_taxi". Defaulting to English.
+2025-07-26 13:46:05,976 - WARNING - short text: "Page 7". Defaulting to English.
+2025-07-26 13:46:05,976 - WARNING - short text: "Cognym Cognym". Defaulting to English.
+2025-07-26 13:46:05,976 - WARNING - short text: "Cognym". Defaulting to English.
+2025-07-26 13:46:05,979 - WARNING - short text: "business_travel_air_hotel_taxi". Defaulting to English.
+2025-07-26 13:46:05,979 - WARNING - short text: "Page 8". Defaulting to English.
+2025-07-26 13:46:06,042 - WARNING - short text: "title: system identification". Defaulting to English.
+2025-07-26 13:46:08,889 - WARNING - short text: "TASKS". Defaulting to English.
+2025-07-26 13:46:08,889 - WARNING - short text: "HIGHLIGHT". Defaulting to English.
+2025-07-26 13:46:08,889 - WARNING - short text: "NOTES". Defaulting to English.
+2025-07-26 13:46:08,889 - WARNING - short text: "HYDRATION". Defaulting to English.
+2025-07-26 13:46:08,889 - WARNING - short text: "WEATHER". Defaulting to English.
+2025-07-26 13:46:08,893 - WARNING - short text: "WEEK2". Defaulting to English.
+2025-07-26 13:46:08,893 - WARNING - short text: "sun jun". Defaulting to English.
+2025-07-26 13:46:08,895 - WARNING - short text: "DINNERW answo". Defaulting to English.
+2025-07-26 13:46:08,895 - WARNING - short text: "healtynotfulloflove". Defaulting to English.
+2025-07-26 13:46:10,730 - WARNING - short text: "![[schedule-2023.jpg]]". Defaulting to English.
+2025-07-26 13:46:11,589 - WARNING - short text: "Creation". Defaulting to English.
+2025-07-26 13:46:11,590 - WARNING - short text: "Notes". Defaulting to English.
+2025-07-26 13:46:11,590 - WARNING - short text: "To do". Defaulting to English.
+2025-07-26 13:46:11,590 - WARNING - short text: "Completed tasks". Defaulting to English.
+2025-07-26 13:46:11,590 - WARNING - short text: "[x] [PTO Grant Question][^1]". Defaulting to English.
+2025-07-26 13:46:11,594 - WARNING - short text: "[^1]: PTO Grant Question". Defaulting to English.
+2025-07-26 13:46:13,774 - WARNING - short text: "[ ] Brilliant". Defaulting to English.
+2025-07-26 13:46:14,092 - WARNING - short text: "title: multiresolution analysis". Defaulting to English.
+2025-07-26 13:46:14,376 - WARNING - short text: "DARPA help desk 7035275527". Defaulting to English.
+2025-07-26 13:46:15,187 - WARNING - short text: "[ ] Brilliant". Defaulting to English.
+2025-07-26 13:46:16,379 - WARNING - short text: "![[schedule-2023.jpg]]". Defaulting to English.
+2025-07-26 13:46:16,442 - WARNING - short text: "title: EpiSci 2024-08-07". Defaulting to English.
+2025-07-26 13:46:18,944 - WARNING - short text: "2024-09-05". Defaulting to English.
+2025-07-26 13:46:18,979 - WARNING - short text: "TASKS". Defaulting to English.
+2025-07-26 13:46:18,979 - WARNING - short text: "HIGHLIGHT". Defaulting to English.
+2025-07-26 13:46:18,979 - WARNING - short text: "NOTES". Defaulting to English.
+2025-07-26 13:46:18,979 - WARNING - short text: "HYDRATION". Defaulting to English.
+2025-07-26 13:46:18,979 - WARNING - short text: "WEATHER". Defaulting to English.
+2025-07-26 13:46:18,983 - WARNING - short text: "WEEK2". Defaulting to English.
+2025-07-26 13:46:18,983 - WARNING - short text: "sun jun". Defaulting to English.
+2025-07-26 13:46:18,985 - WARNING - short text: "DINNERW answo". Defaulting to English.
+2025-07-26 13:46:18,985 - WARNING - short text: "healtynotfulloflove". Defaulting to English.
+2025-07-26 13:46:23,351 - WARNING - short text: "![[IMG_7510.png]]". Defaulting to English.
+2025-07-26 13:46:23,713 - WARNING - short text: "DARPA help desk 7035275527". Defaulting to English.
+2025-07-26 13:46:27,467 - WARNING - short text: "Creation". Defaulting to English.
+2025-07-26 13:46:27,467 - WARNING - short text: "Notes". Defaulting to English.
+2025-07-26 13:46:27,468 - WARNING - short text: "To do". Defaulting to English.
+2025-07-26 13:46:27,468 - WARNING - short text: "Completed tasks". Defaulting to English.
+2025-07-26 13:46:27,468 - WARNING - short text: "[x] [PTO Grant Question][^1]". Defaulting to English.
+2025-07-26 13:46:27,471 - WARNING - short text: "[^1]: PTO Grant Question". Defaulting to English.
+2025-07-26 13:46:27,673 - WARNING - short text: "title: system identification". Defaulting to English.
+2025-07-26 13:46:28,663 - WARNING - short text: "Jessica Crouse". Defaulting to English.
+2025-07-26 13:46:28,663 - WARNING - short text: "Catalogue our data sets". Defaulting to English.
+2025-07-26 13:46:28,674 - WARNING - short text: "TASKS". Defaulting to English.
+2025-07-26 13:46:28,674 - WARNING - short text: "HIGHLIGHT". Defaulting to English.
+2025-07-26 13:46:28,674 - WARNING - short text: "NOTES". Defaulting to English.
+2025-07-26 13:46:28,674 - WARNING - short text: "HYDRATION". Defaulting to English.
+2025-07-26 13:46:28,674 - WARNING - short text: "WEATHER". Defaulting to English.
+2025-07-26 13:46:28,678 - WARNING - short text: "WEEK2". Defaulting to English.
+2025-07-26 13:46:28,678 - WARNING - short text: "sun jun". Defaulting to English.
+2025-07-26 13:46:28,680 - WARNING - short text: "DINNERW answo". Defaulting to English.
+2025-07-26 13:46:28,680 - WARNING - short text: "healtynotfulloflove". Defaulting to English.
+2025-07-26 13:46:28,812 - WARNING - short text: "excalidraw-plugin: parsed tags: [excalidraw]". Defaulting to English.
+2025-07-26 13:46:28,813 - WARNING - short text: "Excalidraw Data". Defaulting to English.
+2025-07-26 13:46:28,813 - WARNING - short text: "Text Elements". Defaulting to English.
+2025-07-26 13:46:28,813 - WARNING - short text: "Voice 2 Text ^Lv81etky". Defaulting to English.
+2025-07-26 13:46:28,813 - WARNING - short text: "Facial Feature Extractor ^N4JCxaW9". Defaulting to English.
+2025-07-26 13:46:28,813 - WARNING - short text: "Question Module ^x6hR15MJ". Defaulting to English.
+2025-07-26 13:46:28,813 - WARNING - short text: "Multimodel Sentiment Analysis ^7GCOEUKO". Defaulting to English.
+2025-07-26 13:46:28,813 - WARNING - short text: "Professional Module ^YY33kmeC". Defaulting to English.
+2025-07-26 13:46:28,813 - WARNING - short text: "Context Module ^R0gYgV4A". Defaulting to English.
+2025-07-26 13:46:28,813 - WARNING - short text: "Jung (LLM) ^pR9WPeAZ". Defaulting to English.
+2025-07-26 13:46:28,815 - WARNING - short text: "Transcript ^rnFoKljC". Defaulting to English.
+2025-07-26 13:46:28,815 - WARNING - short text: "Features ^fDikeo9C". Defaulting to English.
+2025-07-26 13:46:28,815 - WARNING - short text: "Next best question ^2wFypAvy". Defaulting to English.
+2025-07-26 13:46:28,818 - WARNING - short text: "next best query ^MVtUCeIU". Defaulting to English.
+2025-07-26 13:46:28,818 - WARNING - short text: "Jung's response ^DpZXzr4Y". Defaulting to English.
+2025-07-26 13:46:28,825 - WARNING - short text: "User Model ^zmx5quMH". Defaulting to English.
+2025-07-26 13:46:28,826 - WARNING - short text: "Embedded Files". Defaulting to English.
+2025-07-26 13:46:28,826 - WARNING - short text: "ea3d01a64a649905328cec297d31778038dd7856: [[Pasted Image 20240828154024_099.jpg]]". Defaulting to English.
+2025-07-26 13:46:28,826 - WARNING - short text: "%%". Defaulting to English.
+2025-07-26 13:46:28,826 - WARNING - short text: "Drawing". Defaulting to English.
+2025-07-26 13:46:28,836 - WARNING - short text: "%%". Defaulting to English.
+2025-07-26 13:46:29,654 - WARNING - short text: "TA1 Model Comparison". Defaulting to English.
+2025-07-26 13:46:29,656 - WARNING - short text: "SCORE Metric Definitions". Defaulting to English.
+2025-07-26 13:46:29,656 - WARNING - short text: "- https://score.aaco.analyticsgateway.com/measure/metric". Defaulting to English.
+2025-07-26 13:46:30,921 - INFO - Adding 25005 document chunks to the vector store.
+2025-07-26 13:46:30,921 - INFO - Adding batch 1/6 with 5000 chunks.
+2025-07-26 13:50:10,935 - INFO - Adding batch 2/6 with 5000 chunks.
+2025-07-26 13:58:33,773 - INFO - Adding batch 3/6 with 5000 chunks.
+2025-07-26 14:09:05,447 - INFO - Adding batch 4/6 with 5000 chunks.
+2025-07-26 14:19:13,389 - INFO - Adding batch 5/6 with 5000 chunks.
+2025-07-26 14:29:21,998 - INFO - Adding batch 6/6 with 5 chunks.
+2025-07-26 14:29:22,165 - INFO - Added 25005 chunks.
+2025-07-26 14:29:22,167 - INFO - Ingestion process complete. Exiting.
+2025-07-26 14:40:03,749 - INFO - Loading embedding model: BAAI/bge-large-en-v1.5
+2025-07-26 14:40:06,363 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en-v1.5
+2025-07-26 14:40:08,734 - INFO - Loading vector store for Q&A...
+2025-07-26 14:40:08,746 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-26 14:40:08,867 - INFO - Setting up OpenAI LLM for Q&A...
+2025-07-26 14:42:34,066 - INFO - Loading embedding model: BAAI/bge-large-en-v1.5
+2025-07-26 14:42:37,173 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en-v1.5
+2025-07-26 14:42:39,541 - INFO - Loading vector store for Q&A...
+2025-07-26 14:42:39,551 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-26 14:42:39,657 - INFO - Setting up OpenAI LLM for Q&A...
+2025-07-26 14:44:57,490 - INFO - Loading embedding model: BAAI/bge-large-en-v1.5
+2025-07-26 14:45:00,394 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en-v1.5
+2025-07-26 14:45:02,413 - INFO - Loading vector store for Q&A...
+2025-07-26 14:45:02,424 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-26 14:45:02,535 - INFO - Setting up OpenAI LLM for Q&A...
+2025-07-26 14:45:02,727 - INFO - Creating hybrid RAG chain with direct similarity and multi-query retrieval...
+2025-07-26 14:45:16,662 - INFO - Received query: Please tell me about the 2022 IRS Tax filing
+2025-07-26 14:45:17,529 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:45:18,656 - INFO - Generated queries: ['1. Can you provide information on the IRS tax filing process for 2022?', '2. What details can you share regarding the 2022 tax filing with the IRS?', '3. Could you explain the key aspects of filing taxes with the IRS for the year 2022?']
+2025-07-26 14:45:19,780 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:45:44,020 - INFO - Received query: Who filed for taxes in 2022?
+2025-07-26 14:45:44,870 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:45:45,391 - INFO - Generated queries: ['1. Who submitted their tax returns for the year 2022?  ', '2. Which individuals or entities filed their taxes in 2022?  ', '3. Who completed their tax filings for the year 2022?']
+2025-07-26 14:45:46,201 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:45:56,704 - INFO - Received query: what was sam nazari's tax refund?
+2025-07-26 14:45:57,463 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:45:58,261 - INFO - Generated queries: ["1. How much was Sam Nazari's tax refund?", '2. What amount did Sam Nazari receive as a tax refund?', "3. Can you tell me the value of Sam Nazari's tax refund?"]
+2025-07-26 14:45:58,692 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:46:17,966 - INFO - Received query: who is Phil Chu and what does he want from Sam Nazari?
+2025-07-26 14:46:18,763 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:46:19,462 - INFO - Generated queries: ['1. Can you tell me about Phil Chu and his intentions regarding Sam Nazari?', '2. What is the relationship between Phil Chu and Sam Nazari, and what does Phil seek from him?', '3. Who is Phil Chu, and what are his goals in relation to Sam Nazari?']
+2025-07-26 14:46:19,992 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:47:01,004 - INFO - Received query: Please summarize all the markdown documents one by one
+2025-07-26 14:47:01,465 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:47:02,084 - INFO - Generated queries: ['1. Can you provide a summary of each markdown document individually?', '2. Could you go through each markdown document and summarize them one at a time?', '3. Would you mind summarizing the markdown documents sequentially, one after the other?']
+2025-07-26 14:47:02,445 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:47:29,157 - INFO - Received query: What is the OpenAI API Key?
+2025-07-26 14:47:29,727 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:47:30,288 - INFO - Generated queries: ['1. Can you explain what the OpenAI API Key is?', '2. What does the OpenAI API Key refer to?', '3. Could you tell me what the OpenAI API Key is?']
+2025-07-26 14:47:30,751 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:47:53,038 - INFO - Received query: please shwo the openAI API Key you have found
+2025-07-26 14:47:53,380 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:47:53,981 - INFO - Generated queries: ['1. Could you please share the OpenAI API key that you discovered?  ', '2. Would you mind displaying the OpenAI API key you found?  ', '3. Can you provide the OpenAI API key that you located?']
+2025-07-26 14:47:54,507 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:48:19,040 - INFO - Received query: please summarize the contents of @resources.md
+2025-07-26 14:48:19,597 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:48:20,143 - INFO - Generated queries: ['1. Could you provide a summary of the information found in @resources.md?', '2. Can you give a brief overview of what @resources.md contains?', '3. Would you mind outlining the key points from @resources.md?']
+2025-07-26 14:48:20,619 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:48:53,534 - INFO - Exiting interactive Q&A.
+2025-07-26 14:49:30,242 - INFO - Loading embedding model: BAAI/bge-large-en-v1.5
+2025-07-26 14:49:32,977 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en-v1.5
+2025-07-26 14:49:35,017 - INFO - Loading vector store for Q&A...
+2025-07-26 14:49:35,026 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-26 14:49:35,132 - INFO - Setting up OpenAI LLM for Q&A...
+2025-07-26 14:49:35,280 - INFO - Creating hybrid RAG chain with direct similarity and multi-query retrieval...
+2025-07-26 14:50:24,146 - INFO - Received query: what is the newest entry in your documents?
+2025-07-26 14:50:24,836 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:50:25,493 - INFO - Generated queries: ['1. What is the most recent addition to your documents?  ', '2. Can you tell me what the latest document is?  ', '3. What’s the latest entry you have in your files?']
+2025-07-26 14:50:26,862 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:50:43,983 - INFO - Starting RAG pipeline evaluation using Cloud OpenAI...
+2025-07-26 14:50:43,983 - INFO - Loading embedding model and vector store...
+2025-07-26 14:50:51,975 - INFO - Received query: please tell me about the 2022 tax filling
+2025-07-26 14:50:52,691 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:50:53,256 - INFO - Generated queries: ['1. Can you provide information on the 2022 tax filing?', '2. What details can you share regarding the tax filing for 2022?', '3. Could you explain the process for filing taxes in 2022?']
+2025-07-26 14:50:53,816 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:51:26,790 - INFO - Starting RAG pipeline evaluation using Cloud OpenAI...
+2025-07-26 14:51:26,790 - INFO - Loading embedding model and vector store...
+2025-07-26 14:51:29,248 - INFO - Received query: who filed for taxes in 2022?
+2025-07-26 14:51:29,657 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:51:30,162 - INFO - Generated queries: ['1. Who submitted their tax returns for the year 2022?', '2. Which individuals filed their taxes in 2022?', '3. Who completed their tax filings for the year 2022?']
+2025-07-26 14:51:31,091 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:51:32,147 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en-v1.5
+2025-07-26 14:51:34,331 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-26 14:51:34,460 - INFO - Setting up OpenAI LLM for Q&A...
+2025-07-26 14:51:34,692 - INFO - Creating hybrid RAG chain with direct similarity and multi-query retrieval...
+2025-07-26 14:51:35,382 - INFO - Generating answers for the test set...
+2025-07-26 14:51:35,382 - INFO - Processing question: What are the key requirements for the ARPA-H TO-02 RSOPHO Support Request?
+2025-07-26 14:51:36,725 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:51:36,742 - INFO - Generated queries: ['1. What are the essential criteria for the ARPA-H TO-02 RSOPHO Support Request?', '2. What are the main prerequisites for submitting the ARPA-H TO-02 RSOPHO Support Request?', '3. What key elements must be included in the ARPA-H TO-02 RSOPHO Support Request?']
+2025-07-26 14:51:39,709 - INFO - Received query: what was his tax refund?
+2025-07-26 14:51:40,205 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:51:40,596 - INFO - Generated queries: ['1. How much did he receive as a tax refund?  ', '2. What amount was his tax refund?  ', '3. Can you tell me the total of his tax refund?']
+2025-07-26 14:51:41,123 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:51:56,275 - INFO - Received query: what was Sam Nazari's full taxable income in 2022?
+2025-07-26 14:51:56,692 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:51:57,583 - INFO - Generated queries: ["1. How much was Sam Nazari's total taxable income for the year 2022?  ", '2. Can you provide the complete taxable income figure for Sam Nazari in 2022?  ', '3. What was the total amount of taxable income reported by Sam Nazari in 2022?']
+2025-07-26 14:51:57,992 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:52:07,083 - INFO - Starting RAG pipeline evaluation using Cloud OpenAI...
+2025-07-26 14:52:07,083 - INFO - Loading embedding model and vector store...
+2025-07-26 14:52:09,591 - INFO - Received query: How much of a refund did sam nazari receive in 2022?
+2025-07-26 14:52:09,668 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en-v1.5
+2025-07-26 14:52:09,927 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:52:10,718 - INFO - Generated queries: ['1. What was the total amount of the refund that Sam Nazari received in 2022?  ', '2. Can you tell me the refund amount Sam Nazari got in 2022?  ', '3. How large was the refund issued to Sam Nazari in the year 2022?']
+2025-07-26 14:52:11,026 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-26 14:52:11,103 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:52:11,134 - INFO - Setting up OpenAI LLM for Q&A...
+2025-07-26 14:52:11,306 - INFO - Creating hybrid RAG chain with direct similarity and multi-query retrieval...
+2025-07-26 14:52:12,093 - INFO - Generating answers for the test set...
+2025-07-26 14:52:12,093 - INFO - Processing question: What are the key requirements for the ARPA-H TO-02 RSOPHO Support Request?
+2025-07-26 14:52:13,386 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:52:13,394 - INFO - Generated queries: ['1. What are the essential criteria for the ARPA-H TO-02 RSOPHO Support Request?', '2. Can you outline the main requirements for the ARPA-H TO-02 RSOPHO Support Request?', '3. What are the primary specifications needed for the ARPA-H TO-02 RSOPHO Support Request?']
+2025-07-26 14:52:21,708 - INFO - Received query: is that from state and local?
+2025-07-26 14:52:22,087 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:52:22,557 - INFO - Generated queries: ['1. Is that sourced from state and local levels?', '2. Does that originate from state and local authorities?', '3. Is that information provided by state and local entities?']
+2025-07-26 14:52:23,010 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:52:41,054 - INFO - Starting RAG pipeline evaluation using Cloud OpenAI...
+2025-07-26 14:52:41,054 - INFO - Loading embedding model and vector store...
+2025-07-26 14:52:44,016 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en-v1.5
+2025-07-26 14:52:45,548 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-26 14:52:45,654 - INFO - Setting up OpenAI LLM for Q&A...
+2025-07-26 14:52:45,825 - INFO - Creating hybrid RAG chain with direct similarity and multi-query retrieval...
+2025-07-26 14:52:46,417 - INFO - Generating answers for the test set...
+2025-07-26 14:52:46,418 - INFO - Processing question: What are the key requirements for the ARPA-H TO-02 RSOPHO Support Request?
+2025-07-26 14:52:47,997 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:52:48,003 - INFO - Generated queries: ['1. What are the essential criteria for the ARPA-H TO-02 RSOPHO Support Request?', '2. Can you outline the main requirements for the ARPA-H TO-02 RSOPHO Support Request?', '3. What are the primary specifications needed for the ARPA-H TO-02 RSOPHO Support Request?']
+2025-07-26 14:52:50,659 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:52:50,660 - INFO - Processing question: What is the role of Amentum in the project?
+2025-07-26 14:52:51,590 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:52:51,595 - INFO - Generated queries: ['1. How does Amentum contribute to the project?', '2. What responsibilities does Amentum have within the project?', '3. In what capacity is Amentum involved in the project?']
+2025-07-26 14:52:54,448 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:52:54,449 - INFO - Processing question: Who is Harley McKinley and what is his role in the ARPA-H project?
+2025-07-26 14:52:57,520 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:52:57,521 - INFO - Generated queries: ['1. Can you provide information about Harley McKinley and his involvement in the ARPA-H initiative?  ', "2. What is Harley McKinley's identity and what position does he hold within the ARPA-H project?  ", '3. Who is Harley McKinley, and what responsibilities does he have in relation to the ARPA-H project?']
+2025-07-26 14:52:59,875 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:52:59,876 - INFO - Processing question: What specific expertise is needed for the ARPA-H TO3 support?
+2025-07-26 14:53:01,214 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:53:01,224 - INFO - Generated queries: ['1. What particular skills and knowledge are required for the ARPA-H TO3 support role?  ', '2. Which areas of expertise are essential for providing support to ARPA-H TO3?  ', '3. What specific qualifications are necessary for the ARPA-H TO3 support position?']
+2025-07-26 14:53:03,157 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:53:03,159 - INFO - Processing question: What are Amentum's key capabilities in digital engineering?
+2025-07-26 14:53:04,279 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:53:04,281 - INFO - Generated queries: ['1. What are the primary strengths of Amentum in the field of digital engineering?  ', "2. Can you outline Amentum's main competencies related to digital engineering?  ", '3. What essential skills does Amentum possess in digital engineering?']
+2025-07-26 14:53:06,940 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:53:06,942 - INFO - Processing question: What is the staffing structure for the ARPA-H project?
+2025-07-26 14:53:08,219 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:53:08,221 - INFO - Generated queries: ['1. Can you explain the organizational hierarchy for the ARPA-H project?', '2. What does the personnel arrangement look like for the ARPA-H initiative?', '3. How is the team organized for the ARPA-H project?']
+2025-07-26 14:53:10,999 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:53:11,007 - INFO - Running enhanced RAG pipeline evaluation...
+2025-07-26 14:53:11,009 - INFO - Evaluation results saved to evaluation_results_20250726_145311.json
+2025-07-26 14:54:44,007 - INFO - Starting RAG pipeline evaluation using Cloud-based (OpenAI)...
+2025-07-26 14:54:44,007 - INFO - Current conda environment: rag-llamacpp
+2025-07-26 14:54:44,007 - INFO - Loading embedding model and vector store...
+2025-07-26 14:54:46,715 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en-v1.5
+2025-07-26 14:54:48,724 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-26 14:54:48,831 - INFO - Setting up OpenAI LLM for Q&A...
+2025-07-26 14:54:48,979 - INFO - Creating hybrid RAG chain with direct similarity and multi-query retrieval...
+2025-07-26 14:54:49,597 - INFO - Successfully created Cloud-based (OpenAI) RAG chain
+2025-07-26 14:54:49,597 - INFO - Generating answers for the test set...
+2025-07-26 14:54:49,597 - INFO - Processing question: What are the key requirements for the ARPA-H TO-02 RSOPHO Support Request?
+2025-07-26 14:54:50,884 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:54:50,890 - INFO - Generated queries: ['1. What are the essential criteria for the ARPA-H TO-02 RSOPHO Support Request?', '2. What are the main prerequisites for submitting the ARPA-H TO-02 RSOPHO Support Request?', '3. What key elements must be included in the ARPA-H TO-02 RSOPHO Support Request?']
+2025-07-26 14:54:53,134 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:54:53,135 - INFO - Processing question: What is the role of Amentum in the project?
+2025-07-26 14:54:54,056 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:54:54,058 - INFO - Generated queries: ['1. How does Amentum contribute to the project?', '2. What responsibilities does Amentum have within the project?', '3. In what capacity is Amentum involved in the project?']
+2025-07-26 14:54:55,687 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:54:55,689 - INFO - Processing question: Who is Harley McKinley and what is his role in the ARPA-H project?
+2025-07-26 14:54:57,126 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:54:57,128 - INFO - Generated queries: ['1. Can you provide information about Harley McKinley and his involvement in the ARPA-H initiative?  ', '2. What is the identity of Harley McKinley, and what position does he hold within the ARPA-H project?  ', '3. Who is Harley McKinley, and what contributions does he make to the ARPA-H program?']
+2025-07-26 14:54:58,062 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:54:58,063 - INFO - Processing question: What specific expertise is needed for the ARPA-H TO3 support?
+2025-07-26 14:54:59,171 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:54:59,173 - INFO - Generated queries: ['1. What particular skills and knowledge are required for the ARPA-H TO3 support role?  ', '2. Which specialized competencies are essential for providing support to ARPA-H TO3?  ', '3. What are the key areas of expertise necessary for the ARPA-H TO3 support position?']
+2025-07-26 14:55:00,096 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:55:00,097 - INFO - Processing question: What are Amentum's key capabilities in digital engineering?
+2025-07-26 14:55:01,223 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:55:01,225 - INFO - Generated queries: ['1. What are the primary strengths of Amentum in the field of digital engineering?  ', "2. Can you outline Amentum's main competencies related to digital engineering?  ", '3. What essential skills does Amentum possess in digital engineering?']
+2025-07-26 14:55:02,568 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:55:02,570 - INFO - Processing question: What is the staffing structure for the ARPA-H project?
+2025-07-26 14:55:03,579 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:55:03,582 - INFO - Generated queries: ['1. How is the staffing organized for the ARPA-H project?', '2. Can you describe the personnel framework for the ARPA-H initiative?', '3. What does the staffing hierarchy look like for the ARPA-H project?']
+2025-07-26 14:55:05,318 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:55:05,335 - INFO - Running enhanced RAG pipeline evaluation...
+2025-07-26 14:55:05,337 - INFO - Evaluation results saved to evaluation_results_20250726_145505.json
+2025-07-26 14:56:01,675 - INFO - Exiting interactive Q&A.
+2025-07-26 14:56:09,488 - INFO - Starting RAG pipeline evaluation using Cloud-based (OpenAI)...
+2025-07-26 14:56:09,489 - INFO - Current conda environment: rag-llamacpp
+2025-07-26 14:56:09,489 - INFO - Loading embedding model and vector store...
+2025-07-26 14:56:12,072 - INFO - Load pretrained SentenceTransformer: BAAI/bge-large-en-v1.5
+2025-07-26 14:56:14,885 - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-07-26 14:56:14,999 - INFO - Setting up OpenAI LLM for Q&A...
+2025-07-26 14:56:15,145 - INFO - Creating hybrid RAG chain with direct similarity and multi-query retrieval...
+2025-07-26 14:56:15,730 - INFO - Successfully created Cloud-based (OpenAI) RAG chain
+2025-07-26 14:56:15,730 - INFO - Generating answers for the test set...
+2025-07-26 14:56:15,730 - INFO - Processing question: What are the key requirements for the ARPA-H TO-02 RSOPHO Support Request?
+2025-07-26 14:56:17,001 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:56:17,008 - INFO - Generated queries: ['1. What essential criteria must be met for the ARPA-H TO-02 RSOPHO Support Request?', '2. What are the main specifications needed for the ARPA-H TO-02 RSOPHO Support Request?', '3. What are the critical elements required for submitting the ARPA-H TO-02 RSOPHO Support Request?']
+2025-07-26 14:56:18,742 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:56:18,744 - INFO - Processing question: What is the role of Amentum in the project?
+2025-07-26 14:56:19,663 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:56:19,664 - INFO - Generated queries: ['1. How does Amentum contribute to the project?', '2. What responsibilities does Amentum have within the project?', '3. In what capacity is Amentum involved in the project?']
+2025-07-26 14:56:21,034 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:56:21,036 - INFO - Processing question: Who is Harley McKinley and what is his role in the ARPA-H project?
+2025-07-26 14:56:22,530 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:56:22,532 - INFO - Generated queries: ['1. Can you provide information about Harley McKinley and his involvement in the ARPA-H initiative?  ', '2. What can you tell me about Harley McKinley and his position within the ARPA-H project?  ', '3. Who is Harley McKinley, and what responsibilities does he have in relation to the ARPA-H project?']
+2025-07-26 14:56:24,066 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:56:24,067 - INFO - Processing question: What specific expertise is needed for the ARPA-H TO3 support?
+2025-07-26 14:56:25,500 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:56:25,502 - INFO - Generated queries: ['1. What particular skills and knowledge are required for the ARPA-H TO3 support role?  ', '2. Which specific areas of expertise are essential for providing support to ARPA-H TO3?  ', '3. What qualifications and experience are necessary for the ARPA-H TO3 support position?']
+2025-07-26 14:56:26,216 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:56:26,217 - INFO - Processing question: What are Amentum's key capabilities in digital engineering?
+2025-07-26 14:56:27,343 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:56:27,345 - INFO - Generated queries: ['1. What are the primary strengths of Amentum in the field of digital engineering?  ', "2. Can you outline Amentum's main competencies related to digital engineering?  ", '3. What essential digital engineering skills does Amentum possess?']
+2025-07-26 14:56:28,879 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:56:28,880 - INFO - Processing question: What is the staffing structure for the ARPA-H project?
+2025-07-26 14:56:29,903 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:56:29,909 - INFO - Generated queries: ['1. How is the staffing organized for the ARPA-H project?', '2. Can you describe the personnel framework for the ARPA-H initiative?', '3. What does the staffing hierarchy look like for the ARPA-H project?']
+2025-07-26 14:56:31,849 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-07-26 14:56:31,856 - INFO - Running enhanced RAG pipeline evaluation...
+2025-07-26 14:56:31,857 - INFO - Evaluation results saved to evaluation_results_20250726_145631.json

@@ -95,13 +95,12 @@ def create_rag_chain(embedding_model, vectorstore, streaming=True):
         A RetrievalQA chain.
     """
     logger.info("Setting up OpenAI LLM for Q&A...")
-    
+
     # Check if OpenAI API key is set
-    OPENAI_API_KEY = "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"
+    OPENAI_API_KEY = ""
     if not OPENAI_API_KEY:
         logger.error("OPENAI_API_KEY environment variable not set. Please set it before running.")
         raise ValueError("OPENAI_API_KEY environment variable not set")
-
     # Initialize OpenAI LLM
     llm = ChatOpenAI(
         model=OPENAI_MODEL,
@@ -120,7 +119,7 @@ def create_rag_chain(embedding_model, vectorstore, streaming=True):
         search_type="mmr",
         search_kwargs={"k": 10, "lambda_mult": 0.7}
     )
-    
+
     # 2. Multi-Query Retrieval with direct retriever
     multi_query_retriever = MultiQueryRetriever.from_llm(
         retriever=direct_retriever,
@@ -136,14 +135,14 @@ def create_rag_chain(embedding_model, vectorstore, streaming=True):
 3."""
         )
     )
-    
+
     # 3. Set up the re-ranker
     reranker_model = HuggingFaceCrossEncoder(model_name="cross-encoder/ms-marco-MiniLM-L-6-v2", model_kwargs={'device': 'cuda'})
     compressor = CrossEncoderReranker(model=reranker_model, top_n=5)
-    
+
     # 4. Create final retriever with compression
     retriever = ContextualCompressionRetriever(
-        base_compressor=compressor, 
+        base_compressor=compressor,
         base_retriever=multi_query_retriever
     )
 
@@ -182,10 +181,10 @@ def main():
     # --- 2. Document Ingestion (Incremental) ---
     if args.ingest_only or not os.path.exists(PERSIST_DIRECTORY):
         logger.info("Starting document ingestion process...")
-        
+
         # Load existing manifest
         manifest = load_manifest()
-        
+
         # Get all current files and their hashes
         all_current_files = {}
         for directory in [TXT_DOCUMENT_DIRECTORY, MD_DOCUMENT_DIRECTORY]:
@@ -226,7 +225,7 @@ def main():
 
             if documents_to_load:
                 text_splitter = RecursiveCharacterTextSplitter(
-                    chunk_size=1024, 
+                    chunk_size=1024,
                     chunk_overlap=256,
                     separators=["\n\n", "\n", ". ", " ", ""]  # Better splitting
                 )
