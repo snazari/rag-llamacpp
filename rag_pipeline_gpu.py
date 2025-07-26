@@ -17,6 +17,9 @@ from langchain.chains import RetrievalQA, HypotheticalDocumentEmbedder
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.prompts import PromptTemplate
 from langchain.retrievers import ContextualCompressionRetriever
+from langchain.retrievers.multi_query import MultiQueryRetriever
+from langchain.retrievers import ParentDocumentRetriever
+from langchain.storage import InMemoryStore
 from langchain_community.cross_encoders import HuggingFaceCrossEncoder
 from langchain.retrievers.document_compressors.cross_encoder_rerank import CrossEncoderReranker
 from langchain_core.embeddings import Embeddings
@@ -121,41 +124,91 @@ def create_rag_chain(embedding_model, vectorstore, streaming=True):
         stop=["Human:", "User:", "Question:", "Answer:", "Source:", "Sources:", "Context:"],
     )
 
-    # --- Creating the RAG Chain with HyDE and Re-ranking ---
-    logger.info("Creating RAG chain with HyDE and Re-ranker...")
+    # --- Creating Advanced RAG Chain with Multiple Retrieval Techniques ---
+    logger.info("Creating advanced RAG chain with HyDE, Multi-Query, Parent Document, and Re-ranking...")
 
     # 1. Hypothetical Document Embedder (HyDE)
-    # Use the main LLM for HyDE to avoid loading a second model instance
     hyde_prompt_template = """Please write a short, hypothetical document that answers the user's question.
 Question: {question}
 Hypothetical Document:"""
     HYDE_PROMPT = PromptTemplate.from_template(hyde_prompt_template)
     hyde_embeddings = HypotheticalDocumentEmbedder.from_llm(llm, embedding_model, custom_prompt=HYDE_PROMPT)
 
-    # 2. Create a retriever with HyDE embeddings
-    # Use the same collection as the ingested documents, but with HyDE embeddings
+    # 2. Set up Parent Document Retrieval
+    # Create document store for parent documents
+    docstore = InMemoryStore()
+    
+    # Create child splitter (smaller chunks for precise retrieval)
+    child_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=400,
+        chunk_overlap=50,
+        separators=["\n\n", "\n", ". ", " ", ""]
+    )
+    
+    # Create parent splitter (larger chunks for context)
+    parent_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=2000,
+        chunk_overlap=200,
+        separators=["\n\n", "\n", ". ", " ", ""]
+    )
+    
+    # Create parent document retriever
+    parent_retriever = ParentDocumentRetriever(
+        vectorstore=vectorstore,
+        docstore=docstore,
+        child_splitter=child_splitter,
+        parent_splitter=parent_splitter,
+        search_kwargs={"k": 15}
+    )
+    
+    # 3. Create HyDE-enhanced retriever
     vectorstore_with_hyde = Chroma(
         embedding_function=hyde_embeddings,
         persist_directory=PERSIST_DIRECTORY,
-        # Remove collection_name to use default collection with your documents
     )
     
-    # 2.5 Create a retriever with HyDE embeddings and MMR updated
     hyde_retriever = vectorstore_with_hyde.as_retriever(
         search_type="mmr",
-        search_kwargs={"k": 25, "lambda_mult": 0.7}
-        )
+        search_kwargs={"k": 20, "lambda_mult": 0.7}
+    )
     
-    # 3. Set up the re-ranker
+    # 4. Multi-Query Retrieval (generates multiple query variations)
+    multi_query_retriever = MultiQueryRetriever.from_llm(
+        retriever=hyde_retriever,
+        llm=llm,
+        prompt=PromptTemplate(
+            input_variables=["question"],
+            template="""You are an AI language model assistant. Your task is to generate 3 
+different versions of the given user question to retrieve relevant documents from a vector database. 
+By generating multiple perspectives on the user question, your goal is to help the user overcome some 
+of the limitations of distance-based similarity search. Provide these alternative questions separated by newlines.
+Original question: {question}"""
+        )
+    )
+    
+    # 5. Set up the re-ranker
     reranker_model = HuggingFaceCrossEncoder(model_name="cross-encoder/ms-marco-MiniLM-L-6-v2", model_kwargs={'device': 'cuda'})
     compressor = CrossEncoderReranker(model=reranker_model, top_n=5)
-    retriever = ContextualCompressionRetriever(base_compressor=compressor, base_retriever=hyde_retriever)
+    
+    # 6. Create final retriever with compression
+    retriever = ContextualCompressionRetriever(
+        base_compressor=compressor, 
+        base_retriever=multi_query_retriever
+    )
 
-    # 4. Final QA Chain Prompt
-    question_prompt_template = """Use the following pieces of context to answer the question. If you don't know the answer, say "I don't know".
+    # 7. Enhanced QA Chain Prompt for Advanced Retrieval
+    question_prompt_template = """You are an expert assistant with access to comprehensive document context retrieved through advanced techniques.
+Use the following pieces of context to provide a detailed, accurate answer to the question. 
+The context has been carefully selected using multiple retrieval methods for maximum relevance.
+
+If you cannot find sufficient information in the provided context to answer the question completely, 
+say "Based on the provided context, I don't have enough information to fully answer this question."
+
 Context: {context}
+
 Question: {question}
-Answer:"""
+
+Detailed Answer:"""
     QUESTION_PROMPT = PromptTemplate.from_template(question_prompt_template)
 
     # 5. Create the final chain
