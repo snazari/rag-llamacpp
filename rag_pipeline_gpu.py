@@ -110,18 +110,17 @@ def create_rag_chain(embedding_model, vectorstore, streaming=True):
         n_gpu_layers=99,
         n_batch=64000,
         n_ctx=128000,
-        #max_tokens=128000,
         f16_kv=False,
         callback_manager=callback_manager,
         verbose=True,
-        temperature=0.1,
-        top_p=0.9,
-        top_k=40,
-        max_new_tokens=4096,
-        repeat_penalty=1.1,
-        frequency_penalty=0.0,
-        presence_penalty=0.0,
-        stop=["Human:", "User:", "Question:", "\n\nQuestion:", "\n\nHuman:"],
+        temperature=0.2,  # Slightly higher for more natural responses
+        top_p=0.95,       # Higher for better diversity
+        top_k=50,         # Higher for better vocabulary
+        max_new_tokens=2048,  # Reduced to prevent memory issues
+        repeat_penalty=1.15,  # Higher to prevent repetition
+        frequency_penalty=0.1,  # Add frequency penalty
+        presence_penalty=0.1,   # Add presence penalty
+        stop=["\n\nHuman:", "\n\nUser:", "\n\nQuestion:"],  # Cleaner stop tokens
     )
 
     # --- Creating Hybrid RAG Chain with Direct + Multi-Query Retrieval ---
@@ -159,19 +158,14 @@ def create_rag_chain(embedding_model, vectorstore, streaming=True):
         base_retriever=multi_query_retriever
     )
 
-    # 7. Enhanced QA Chain Prompt for Advanced Retrieval
-    question_prompt_template = """You are an expert assistant with access to comprehensive document context retrieved through advanced techniques.
-Use the following pieces of context to provide a detailed, accurate answer to the question. 
-The context has been carefully selected using multiple retrieval methods for maximum relevance.
-
-If you cannot find sufficient information in the provided context to answer the question completely, 
-say "Based on the provided context, I don't have enough information to fully answer this question."
+    # 3. Simplified QA Chain Prompt
+    question_prompt_template = """Answer the question based on the context below. Be concise and accurate.
 
 Context: {context}
 
 Question: {question}
 
-Detailed Answer:"""
+Answer:"""
     QUESTION_PROMPT = PromptTemplate.from_template(question_prompt_template)
 
     # 5. Create the final chain
