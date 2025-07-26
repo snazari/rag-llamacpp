@@ -49,14 +49,9 @@ class HydeRetriever(VectorStoreRetriever):
 # --- Configuration ---
 PERSIST_DIRECTORY = "./chroma_db"
 EMBEDDING_MODEL_NAME = "BAAI/bge-small-en-v1.5"
-#MODEL_PATH = "/home/sam/sandbox/rag/models/capybarahermes-2.5-mistral-7b.Q6_K.gguf" #Works well
-#MODEL_PATH = "/home/sam/sandbox/rag/models/jan-nano-128k-Q8_0.gguf"
-#MODEL_PATH = "/home/sam/sandbox/rag/models/DeepSeek-R1-0528-Qwen3-8B-BF16.gguf"
-#MODEL_PATH = "/home/sam/sandbox/rag/models/LFM2-1.2B-F16.gguf"
-#MODEL_PATH = "/home/sam/sandbox/rag/models/UNCENSORED-Fusetrix-Dolphin-3.2-1B-GRPO_Creative_RP.Q8_0.gguf"
-#MODEL_PATH = "/home/sam/sandbox/rag/models/L3.2-8X3B-MOE-Dark-Champion-Inst-18.4B-uncen-ablit_D_AU-q5_k_m.gguf"
-#MODEL_PATH = "/home/sam/sandbox/rag/models/Qwen2.5-7B-Instruct.fp16.gguf"
 MODEL_PATH = "/datadrive/part1/sandbox/models/Qwen3-30B-A3B-UD-Q8_K_XL.gguf"
+#MODEL_PATH = "/mnt/models/L3.2-8X3B-MOE-Dark-Champion-Inst-18.4B-uncen-ablit_D_AU-Q8_0.gguf"
+#MODEL_PATH = "/mnt/models/M-MOE-4X7B-Dark-MultiVerse-UC-E32-24B-max-cpu-D_AU-Q8_0.gguf"
 TXT_DOCUMENT_DIRECTORY = '/datadrive/part1/sandbox/rag-llamacpp/docs/final_for_rag'
 MD_DOCUMENT_DIRECTORY = '/datadrive/part1/sandbox/rag-llamacpp/docs/md/'
 
@@ -132,11 +127,11 @@ def create_rag_chain(embedding_model, vectorstore, streaming=True):
     llm = LlamaCpp(
         model_path=MODEL_PATH,
         n_gpu_layers=99,
-        n_batch=1024,
-        n_ctx=8192,
-        f16_kv=True,
+        n_batch=64000,
+        n_ctx=128000,
+        f16_kv=False,
         callback_manager=callback_manager,
-        verbose=False,
+        verbose=True,
         temperature=0.1,
     )
 
