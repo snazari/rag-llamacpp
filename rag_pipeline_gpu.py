@@ -141,7 +141,6 @@ def create_rag_chain(embedding_model, vectorstore, streaming=True):
         frequency_penalty=0.0,
         presence_penalty=0.0,
         stop=["Human:", "User:", "Question:", "Answer:", "Source:", "Sources:", "Context:"],
-        separators=["\n\n", "\n", ". ", " ", ""] # Better splitting
     )
 
     # --- Creating the RAG Chain with HyDE and Re-ranking ---
@@ -160,12 +159,11 @@ Hypothetical Document:"""
         vectorstore=vectorstore,
         embeddings=hyde_embeddings,
         search_kwargs={"k": 25, "search_type": "mmr", "lambda_mult": 0.7},
-        top_n=5,
     )
 
     # 3. Set up the re-ranker
     reranker_model = HuggingFaceCrossEncoder(model_name="cross-encoder/ms-marco-MiniLM-L-6-v2", model_kwargs={'device': 'cuda'})
-    compressor = CrossEncoderReranker(model=reranker_model, top_n=3)
+    compressor = CrossEncoderReranker(model=reranker_model, top_n=5)
     retriever = ContextualCompressionRetriever(base_compressor=compressor, base_retriever=hyde_retriever)
 
     # 4. Final QA Chain Prompt
