@@ -124,8 +124,8 @@ def create_rag_chain(embedding_model, vectorstore, streaming=True):
         stop=["Human:", "User:", "Question:", "Answer:", "Source:", "Sources:", "Context:"],
     )
 
-    # --- Creating Advanced RAG Chain with Multiple Retrieval Techniques ---
-    logger.info("Creating advanced RAG chain with HyDE, Multi-Query, Parent Document, and Re-ranking...")
+    # --- Creating Optimized RAG Chain with HyDE, Multi-Query, and Re-ranking ---
+    logger.info("Creating optimized RAG chain with HyDE, Multi-Query, and Re-ranking...")
 
     # 1. Hypothetical Document Embedder (HyDE)
     hyde_prompt_template = """Please write a short, hypothetical document that answers the user's question.
@@ -134,42 +134,16 @@ Hypothetical Document:"""
     HYDE_PROMPT = PromptTemplate.from_template(hyde_prompt_template)
     hyde_embeddings = HypotheticalDocumentEmbedder.from_llm(llm, embedding_model, custom_prompt=HYDE_PROMPT)
 
-    # 2. Set up Parent Document Retrieval
-    # Create document store for parent documents
-    docstore = InMemoryStore()
-    
-    # Create child splitter (smaller chunks for precise retrieval)
-    child_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=400,
-        chunk_overlap=50,
-        separators=["\n\n", "\n", ". ", " ", ""]
-    )
-    
-    # Create parent splitter (larger chunks for context)
-    parent_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=2000,
-        chunk_overlap=200,
-        separators=["\n\n", "\n", ". ", " ", ""]
-    )
-    
-    # Create parent document retriever
-    parent_retriever = ParentDocumentRetriever(
-        vectorstore=vectorstore,
-        docstore=docstore,
-        child_splitter=child_splitter,
-        parent_splitter=parent_splitter,
-        search_kwargs={"k": 15}
-    )
-    
-    # 3. Create HyDE-enhanced retriever
+    # 2. Create HyDE-enhanced retriever with existing vectorstore
     vectorstore_with_hyde = Chroma(
         embedding_function=hyde_embeddings,
         persist_directory=PERSIST_DIRECTORY,
     )
     
+    # 3. Base retriever with MMR for diversity
     hyde_retriever = vectorstore_with_hyde.as_retriever(
         search_type="mmr",
-        search_kwargs={"k": 20, "lambda_mult": 0.7}
+        search_kwargs={"k": 15, "lambda_mult": 0.8}  # Increased lambda for more relevance
     )
     
     # 4. Multi-Query Retrieval (generates multiple query variations)
@@ -178,11 +152,11 @@ Hypothetical Document:"""
         llm=llm,
         prompt=PromptTemplate(
             input_variables=["question"],
-            template="""You are an AI language model assistant. Your task is to generate 3 
-different versions of the given user question to retrieve relevant documents from a vector database. 
-By generating multiple perspectives on the user question, your goal is to help the user overcome some 
-of the limitations of distance-based similarity search. Provide these alternative questions separated by newlines.
-Original question: {question}"""
+            template="""Generate exactly 3 alternative versions of the following question. Each alternative should be a single, concise question on a new line. Do not include explanations or additional text.
+
+Original question: {question}
+
+Alternative questions:"""
         )
     )
     
