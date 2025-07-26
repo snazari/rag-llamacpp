@@ -1,0 +1,14 @@
+langchain==0.3.26
+langchain-community==0.3.27
+langchain-text-splitters==0.3.8
+langchain-huggingface
+chromadb
+pypdf
+sentence-transformers
+ragas
+datasets
+numpy==2.2.4
+opencv-python
+rich
+langchain-chroma
+protobuf==4.25.3
