@@ -1,5 +1,5 @@
 from groq import Groq
-client = Groq(api_key="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")
+client = Groq(api_key="")
 completion = client.chat.completions.create(
     #model="moonshotai/kimi-k2-instruct",
     #model="qwen/qwen3-32b",
