@@ -25,7 +25,7 @@ from pydantic.v1 import Field
 from typing import Any, List
 from langchain_core.documents import Document
 
-# --- Custom HyDE Retriever ---
+# --- Custom HyDE Retriever --- Might have to use the Langchain HyDE retriever instead
 class HydeRetriever(VectorStoreRetriever):
     """Retriever that uses HyDE to embed the query and then searches the vector store."""
 
@@ -154,11 +154,11 @@ Hypothetical Document:"""
     HYDE_PROMPT = PromptTemplate.from_template(hyde_prompt_template)
     hyde_embeddings = HypotheticalDocumentEmbedder.from_llm(llm, embedding_model, custom_prompt=HYDE_PROMPT)
 
-    # 2. Create a retriever with HyDE embeddings and top_n=5
+    # 2. Create a retriever with HyDE embeddings
     hyde_retriever = HydeRetriever(
         vectorstore=vectorstore,
         embeddings=hyde_embeddings,
-        search_kwargs={"k": 25, "search_type": "mmr", "lambda_mult": 0.7},
+        search_kwargs={"k": 25},  # Removed MMR parameters that don't work with custom retriever
     )
 
     # 3. Set up the re-ranker
