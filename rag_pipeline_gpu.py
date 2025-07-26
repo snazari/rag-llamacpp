@@ -48,7 +48,7 @@ class HydeRetriever(VectorStoreRetriever):
 
 # --- Configuration ---
 PERSIST_DIRECTORY = "./chroma_db"
-EMBEDDING_MODEL_NAME = "BAAI/bge-small-en-v1.5"
+EMBEDDING_MODEL_NAME = "BAAI/bge-large-en-v1.5"
 MODEL_PATH = "/datadrive/part1/sandbox/models/Qwen3-30B-A3B-UD-Q8_K_XL.gguf"
 #MODEL_PATH = "/mnt/models/L3.2-8X3B-MOE-Dark-Champion-Inst-18.4B-uncen-ablit_D_AU-Q8_0.gguf"
 #MODEL_PATH = "/mnt/models/M-MOE-4X7B-Dark-MultiVerse-UC-E32-24B-max-cpu-D_AU-Q8_0.gguf"
