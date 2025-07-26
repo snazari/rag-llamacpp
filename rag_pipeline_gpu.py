@@ -141,6 +141,7 @@ def create_rag_chain(embedding_model, vectorstore, streaming=True):
         frequency_penalty=0.0,
         presence_penalty=0.0,
         stop=["Human:", "User:", "Question:", "Answer:", "Source:", "Sources:", "Context:"],
+        separators=["\n\n", "\n", ". ", " ", ""] # Better splitting
     )
 
     # --- Creating the RAG Chain with HyDE and Re-ranking ---
