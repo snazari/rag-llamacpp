@@ -159,7 +159,7 @@ Hypothetical Document:"""
     hyde_retriever = HydeRetriever(
         vectorstore=vectorstore,
         embeddings=hyde_embeddings,
-        search_kwargs={"k": 25},
+        search_kwargs={"k": 25, "search_type": "mmr", "lambda_mult": 0.7},
         top_n=5,
     )
 
