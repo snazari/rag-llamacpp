@@ -232,7 +232,7 @@ def main():
                 documents_to_load.extend(loader.load())
 
             if documents_to_load:
-                text_splitter = RecursiveCharacterTextSplitter(chunk_size=512, chunk_overlap=50)
+                text_splitter = RecursiveCharacterTextSplitter(chunk_size=1024, chunk_overlap=256)
                 splits = text_splitter.split_documents(documents_to_load)
                 doc_ids = [f"{doc.metadata['source']}_{i}" for i, doc in enumerate(splits)]
                 logger.info(f"Adding {len(splits)} document chunks to the vector store.")
