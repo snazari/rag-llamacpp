@@ -131,7 +131,7 @@ def create_rag_chain(embedding_model, vectorstore, streaming=True):
         search_type="mmr",
         search_kwargs={"k": 10, "lambda_mult": 0.7}
     )
-    
+
     # 2. Multi-Query Retrieval with direct retriever (no HyDE for now)
     multi_query_retriever = MultiQueryRetriever.from_llm(
         retriever=direct_retriever,
@@ -147,14 +147,14 @@ def create_rag_chain(embedding_model, vectorstore, streaming=True):
 3."""
         )
     )
-    
+
     # 5. Set up the re-ranker
     reranker_model = HuggingFaceCrossEncoder(model_name="cross-encoder/ms-marco-MiniLM-L-6-v2", model_kwargs={'device': 'cuda'})
     compressor = CrossEncoderReranker(model=reranker_model, top_n=5)
-    
+
     # 6. Create final retriever with compression
     retriever = ContextualCompressionRetriever(
-        base_compressor=compressor, 
+        base_compressor=compressor,
         base_retriever=multi_query_retriever
     )
 
@@ -236,7 +236,7 @@ def main():
 
             if documents_to_load:
                 text_splitter = RecursiveCharacterTextSplitter(
-                    chunk_size=1024, 
+                    chunk_size=1024,
                     chunk_overlap=256,
                     separators=["\n\n", "\n", ". ", " ", ""]  # Better splitting
                 )

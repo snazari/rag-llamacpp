@@ -5,12 +5,12 @@ from tqdm import tqdm
 import docx
 import pptx
 import openpyxl
-from unstructured.partition.pdf import partition_pdf
+import PyPDF2
 
 # --- Configuration ---
 # Note: The source directory should contain .txt, .docx, .pptx, and .xlsx files.
-SOURCE_DIR = "/home/sam/sandbox/rag/docs/cleaned"
-DEST_DIR = "/home/sam/sandbox/rag/docs/final_for_rag"
+SOURCE_DIR = "/home/sam/sandbox/rag/rag-llamacpp/docs/cleaned"
+DEST_DIR = "/home/sam/sandbox/rag/rag-llamacpp/docs/final_for_rag"
 
 # --- Text Extraction Functions ---
 
@@ -33,12 +33,16 @@ def extract_text_from_pptx(filepath):
     return "\n".join(text_runs)
 
 def extract_text_from_pdf(filepath):
-    """Extracts text from a .pdf file using unstructured."""
+    """Extracts text from a .pdf file using PyPDF2."""
     try:
-        elements = partition_pdf(filepath, strategy="fast")
-        return "\n".join([str(el.text) for el in elements])
+        with open(filepath, 'rb') as file:
+            pdf_reader = PyPDF2.PdfReader(file)
+            text = ""
+            for page in pdf_reader.pages:
+                text += page.extract_text() + "\n"
+            return text
     except Exception as e:
-        print(f"Could not process PDF {filepath} with unstructured, skipping. Error: {e}")
+        print(f"Could not process PDF {filepath} with PyPDF2, skipping. Error: {e}")
         return ""
 
 def extract_text_from_xlsx(filepath):
