@@ -1,3 +1,17 @@
+"""
+    rag-pipeline-gpu - v1.0.0 - 2025-07-31
+    ======================================
+    (c) 2025 Sam Nazari
+    
+    A LangChain pipeline that reads a directory of markdown files and a
+    directory of unstructured files and answers questions on them using
+    a LlamaCpp model.
+
+    Supports both GPU and CPU inference.
+
+    This is the first release of the pipeline. It works
+"""
+
 import os
 import argparse
 import json
@@ -30,11 +44,18 @@ from langchain_core.documents import Document
 # --- Configuration ---
 PERSIST_DIRECTORY = "./chroma_db"
 EMBEDDING_MODEL_NAME = "BAAI/bge-large-en-v1.5"
-MODEL_PATH = "/datadrive/part1/sandbox/models/Qwen3-30B-A3B-UD-Q8_K_XL.gguf"
+EMBEDDING_CACHE_DIR = "./embedding_models_cache"  # Local cache directory for embedding models
+MODEL_PATH = "/home/sam/sandbox/rag/models/Qwen3-30B-A3B-Instruct-2507-Q4_0.gguf"
+#MODEL_PATH = "/home/sam/sandbox/rag/models/Qwen3-8B.fp16.gguf"
+#MODEL_PATH = "/home/sam/sandbox/rag/models/UNCENSORED-Fusetrix-Dolphin-3.2-1B-GRPO_Creative_RP.Q8_0.gguf"
+#MODEL_PATH = "/home/sam/sandbox/rag/models/Qwen3-30B-A3B-UD-Q8_K_XL.gguf"
 #MODEL_PATH = "/mnt/models/L3.2-8X3B-MOE-Dark-Champion-Inst-18.4B-uncen-ablit_D_AU-Q8_0.gguf"
 #MODEL_PATH = "/mnt/models/M-MOE-4X7B-Dark-MultiVerse-UC-E32-24B-max-cpu-D_AU-Q8_0.gguf"
-TXT_DOCUMENT_DIRECTORY = '/datadrive/part1/sandbox/rag-llamacpp/docs/final_for_rag'
-MD_DOCUMENT_DIRECTORY = '/datadrive/part1/sandbox/rag-llamacpp/docs/md/'
+#MODEL_PATH = "/home/sam/sandbox/rag/models/DeepSeek-R1-0528-Qwen3-8B-BF16.gguf"
+#MODEL_PATH = "/home/sam/sandbox/rag/models/Tiger-Gemma-12B-v3b-Q8_0.gguf"
+#MODEL_PATH = "/home/sam/sandbox/rag/models/capybarahermes-2.5-mistral-7b.Q6_K.gguf"
+TXT_DOCUMENT_DIRECTORY = './docs/final_for_rag/'
+MD_DOCUMENT_DIRECTORY = './docs/md/'
 
 # --- Helper Functions for Incremental Updates ---
 
@@ -104,24 +125,48 @@ def create_rag_chain(embedding_model, vectorstore, streaming=True):
     # Setup callbacks: streaming for interactive, none for evaluation
     callback_manager = CallbackManager([StreamingStdOutCallbackHandler()]) if streaming else None
 
-    # LLM for generating the final answer
-    llm = LlamaCpp(
-        model_path=MODEL_PATH,
-        n_gpu_layers=99,
-        n_batch=64000,
-        n_ctx=128000,
-        f16_kv=False,
-        callback_manager=callback_manager,
-        verbose=True,
-        temperature=0.2,  # Slightly higher for more natural responses
-        top_p=0.95,       # Higher for better diversity
-        top_k=50,         # Higher for better vocabulary
-        max_new_tokens=2048,  # Reduced to prevent memory issues
-        repeat_penalty=1.15,  # Higher to prevent repetition
-        frequency_penalty=0.1,  # Add frequency penalty
-        presence_penalty=0.1,   # Add presence penalty
-        stop=["\n\nHuman:", "\n\nUser:", "\n\nQuestion:"],  # Cleaner stop tokens
-    )
+    # LLM for generating the final answer with GPU memory-safe parameters
+    try:
+        logger.info("Attempting to load LLM with GPU acceleration...")
+        llm = LlamaCpp(
+            model_path=MODEL_PATH,
+            n_gpu_layers=99,  # Reduced from 99 to prevent memory issues
+            n_batch=64000,      # Reduced from 64000 to prevent memory exhaustion
+            n_ctx=128000,       # Reduced from 128000 to manageable size
+            f16_kv=True,      # Enable f16 for memory efficiency
+            callback_manager=callback_manager,
+            verbose=True,
+            temperature=0.2,  # Slightly higher for more natural responses
+            top_p=0.95,       # Higher for better diversity
+            top_k=50,         # Higher for better vocabulary
+            max_new_tokens=2048,  # Reasonable token limit
+            repeat_penalty=1.15,  # Higher to prevent repetition
+            frequency_penalty=0.1,  # Add frequency penalty
+            presence_penalty=0.1,   # Add presence penalty
+            stop=["\n\nHuman:", "\n\nUser:", "\n\nQuestion:"],  # Cleaner stop tokens
+        )
+        logger.info("Successfully loaded LLM with GPU acceleration.")
+    except Exception as e:
+        logger.warning(f"Failed to load LLM with GPU: {e}")
+        logger.info("Falling back to CPU-only mode...")
+        llm = LlamaCpp(
+            model_path=MODEL_PATH,
+            n_gpu_layers=0,   # CPU-only fallback
+            n_batch=512,      # Conservative batch size
+            n_ctx=4096,       # Conservative context size
+            f16_kv=True,      # Memory efficiency
+            callback_manager=callback_manager,
+            verbose=True,
+            temperature=0.2,
+            top_p=0.95,
+            top_k=50,
+            max_new_tokens=2048,
+            repeat_penalty=1.15,
+            frequency_penalty=0.1,
+            presence_penalty=0.1,
+            stop=["\n\nHuman:", "\n\nUser:", "\n\nQuestion:"],
+        )
+        logger.info("Successfully loaded LLM in CPU-only mode.")
 
     # --- Creating Hybrid RAG Chain with Direct + Multi-Query Retrieval ---
     logger.info("Creating hybrid RAG chain with direct similarity and multi-query retrieval...")
@@ -185,10 +230,13 @@ def main():
 
     # --- 1. Load Embedding Model ---
     logger.info("Loading embedding model...")
+    os.makedirs(EMBEDDING_CACHE_DIR, exist_ok=True)
+    os.environ["TRANSFORMERS_CACHE"] = EMBEDDING_CACHE_DIR
     embedding_model = HuggingFaceEmbeddings(
         model_name=EMBEDDING_MODEL_NAME,
         model_kwargs={'device': 'cuda'},
-        encode_kwargs={'normalize_embeddings': True}
+        encode_kwargs={'normalize_embeddings': True},
+        cache_folder=EMBEDDING_CACHE_DIR # Use the local cache directory
     )
     logger.info("Embedding model loaded.")
 
@@ -257,11 +305,56 @@ def main():
 
     # --- 3. Setup for Q&A (if not ingest-only) ---
     if not os.path.exists(PERSIST_DIRECTORY):
-        logger.error("Chroma database not found. Please run with --ingest-only first.")
-        return
+        logger.warning("Chroma database not found. Running automatic ingestion first...")
 
-    logger.info("Loading vector store for Q&A...")
-    vectorstore = Chroma(persist_directory=PERSIST_DIRECTORY, embedding_function=embedding_model)
+        # Automatically run ingestion process
+        logger.info("Starting document ingestion...")
+
+        # Load and process documents
+        all_current_files = {}
+        for directory in [TXT_DOCUMENT_DIRECTORY, MD_DOCUMENT_DIRECTORY]:
+            if os.path.exists(directory):
+                pattern = os.path.join(directory, '**', '*.txt' if directory == TXT_DOCUMENT_DIRECTORY else '*.md')
+                for filepath in glob.glob(pattern, recursive=True):
+                    all_current_files[filepath] = get_file_hash(filepath)
+
+        if not all_current_files:
+            logger.error("No documents found to ingest. Please check document directories.")
+            return
+
+        # Create vector store and add documents
+        vectorstore = Chroma(persist_directory=PERSIST_DIRECTORY, embedding_function=embedding_model)
+
+        documents_to_load = []
+        for filepath in all_current_files.keys():
+            logger.debug(f"Loading file: {filepath}")
+            loader = UnstructuredFileLoader(filepath) if filepath.endswith('.txt') else UnstructuredMarkdownLoader(filepath)
+            documents_to_load.extend(loader.load())
+
+        if documents_to_load:
+            text_splitter = RecursiveCharacterTextSplitter(
+                chunk_size=1024,
+                chunk_overlap=256,
+                separators=["\n\n", "\n", ". ", " ", ""]  # Better splitting
+            )
+            splits = text_splitter.split_documents(documents_to_load)
+            doc_ids = [f"{doc.metadata['source']}_{i}" for i, doc in enumerate(splits)]
+            logger.info(f"Adding {len(splits)} document chunks to the vector store.")
+
+            batch_size = 5000
+            for i in range(0, len(splits), batch_size):
+                batch_splits = splits[i:i + batch_size]
+                batch_ids = doc_ids[i:i + batch_size]
+                logger.info(f"Adding batch {i // batch_size + 1}/{(len(splits) - 1) // batch_size + 1} with {len(batch_splits)} chunks.")
+                vectorstore.add_documents(documents=batch_splits, ids=batch_ids)
+            logger.info(f"Added {len(splits)} chunks.")
+
+        # Save manifest
+        save_manifest(all_current_files)
+        logger.info("Automatic ingestion complete. Proceeding to Q&A mode.")
+    else:
+        logger.info("Loading existing vector store for Q&A...")
+        vectorstore = Chroma(persist_directory=PERSIST_DIRECTORY, embedding_function=embedding_model)
 
     # --- Create the RAG Chain ---
     qa_chain = create_rag_chain(embedding_model, vectorstore, streaming=True)
