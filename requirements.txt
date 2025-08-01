@@ -1,6 +1,18 @@
-langchain
-langchain-community
-chromadb
+# pydf
 pypdf
+
+# sentence-transformers
 sentence-transformers
-llama-cpp-python 
+
+# llama-cpp-python
+llama-cpp-python
+
+# LlamaIndex core library
+llama-index
+
+# Integration for using LlamaCPP models
+llama-index-llms-llama-cpp
+
+# Integration for sentence-transformer embeddings
+llama-index-embeddings-huggingface
+
