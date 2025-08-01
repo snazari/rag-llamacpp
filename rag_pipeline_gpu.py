@@ -1,3 +1,16 @@
+"""
+This file is to generate a semantic search index for a directory of text files.
+
+The parameters the user can set are:
+    - ROOT_DIR: the path to the directory to index
+    - DATA_DIR: the path to the data directory for the index
+    - INDEX_NAME: the name of the index
+    - NUM_WORKERS: the number of workers to use when building the index
+    - BATCH_SIZE: the batch size to use when building the index
+    - MAX_TOKENS: the maximum number of tokens to use when building the index
+
+(c) Sam Nazari 2025
+"""
 import os
 from rich.console import Console
 from rich.panel import Panel
